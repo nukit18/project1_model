@@ -14,5 +14,8 @@ class Specialist(TimedBaseModel):
     start_talon = Column(String(10))
     name_spec = Column(String(100))
     ip_address = Column(String(100))
+    description = Column(String(200))
+    bakalavr = Column(BigInteger)
+    specialist = Column(BigInteger)
 
     query: sql.Select

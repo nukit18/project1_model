@@ -5,27 +5,36 @@ from asyncpg import UniqueViolationError
 from db_api.db_gino import db
 from db_api.schemas.specialist import Specialist
 
-
 async def create_db_specialist():
-    spec1 = Specialist(id=1, new_queue=0, on_reception="0", num_window=1, start_talon="ОИС-", name_spec="Орехова И.С.", ip_address="192.168.0.0")
+    spec1 = Specialist(id=1, new_queue=0, on_reception="0", num_window=1, start_talon="ОИС-", name_spec="Орехова И.С.", ip_address="192.168.0.105",
+                       description="Подписание док-ов,\nсоздание списков на стипендии,\nобщие вопросы", bakalavr=1, specialist=0)
     await spec1.create()
-    spec2 = Specialist(id=2, new_queue=0, on_reception="0", num_window=2, start_talon="ДАА-", name_spec="Данилова А.А.", ip_address="192.168.0.2")
+    spec2 = Specialist(id=2, new_queue=0, on_reception="0", num_window=2, start_talon="ДАА-", name_spec="Данилова А.А.", ip_address="192.168.0.2",
+                       description="Обеспечение движения контингента,\nподготовка справок о согласии на перевод,\nподготовка справок об обучении,\nпроставление оценок в БРС", bakalavr=1, specialist=1)
     await spec2.create()
-    spec3 = Specialist(id=3, new_queue=0, on_reception="0", num_window=3, start_talon="КМС-", name_spec="Курочкина М.С.", ip_address="192.168.0.3")
+    spec3 = Specialist(id=3, new_queue=0, on_reception="0", num_window=3, start_talon="КМС-", name_spec="Курочкина М.С.", ip_address="192.168.0.3",
+                       description="Вопросы по экзаменам, поселение студентов,\nвыдача студика и пропуска,\nвопросы по учебе", bakalavr=1, specialist=0)
     await spec3.create()
-    spec4 = Specialist(id=4, new_queue=0, on_reception="0", num_window=4, start_talon="ХЕА-", name_spec="Худякова Е.А.", ip_address="127.0.0.1")
+    spec4 = Specialist(id=4, new_queue=0, on_reception="0", num_window=4, start_talon="ХЕА-", name_spec="Худякова Е.А.", ip_address="192.168.1.1.1",
+                       description="Вопросы по экзаменам, вопросы по учебе", bakalavr=1, specialist=0)
     await spec4.create()
-    spec5 = Specialist(id=5, new_queue=0, on_reception="0", num_window=5, start_talon="АИВ-", name_spec="Антропова И.В.", ip_address="192.168.0.4")
+    spec5 = Specialist(id=5, new_queue=0, on_reception="0", num_window=5, start_talon="АИВ-", name_spec="Антропова И.В.", ip_address="192.168.0.4",
+                       description="Выдача справок, работа с заболевшими Covid,\nработа с иностранными студентами, заочники", bakalavr=1, specialist=1)
     await spec5.create()
-    spec6 = Specialist(id=6, new_queue=0, on_reception="0", num_window=6, start_talon="ВАВ-", name_spec="Волкова А.В.", ip_address="192.168.0.5")
+    spec6 = Specialist(id=6, new_queue=0, on_reception="0", num_window=6, start_talon="ВАВ-", name_spec="Волкова А.В.", ip_address="192.168.0.5",
+                       description="Успеваемость на онлайн-курсах и майнорах,\nвыгрузка НТК", bakalavr=1, specialist=0)
     await spec6.create()
-    spec7 = Specialist(id=7, new_queue=0, on_reception="0", num_window=7, start_talon="КНГ-", name_spec="Кийко Н.Г.", ip_address="192.168.0.6")
+    spec7 = Specialist(id=7, new_queue=0, on_reception="0", num_window=7, start_talon="КНГ-", name_spec="Кийко Н.Г.", ip_address="192.168.0.6",
+                       description="Формирование расписания и\nграфика пересдач", bakalavr=1, specialist=1)
     await spec7.create()
-    spec8 = Specialist(id=8, new_queue=0, on_reception="0", num_window=8, start_talon="ТЛН-", name_spec="Тараненко Л.Н.", ip_address="192.168.0.7")
+    spec8 = Specialist(id=8, new_queue=0, on_reception="0", num_window=8, start_talon="ТЛН-", name_spec="Тараненко Л.Н.", ip_address="192.168.0.7",
+                       description="Формирование расписания ИОТ и\nграфика пересдач", bakalavr=1, specialist=0)
     await spec8.create()
-    spec9 = Specialist(id=9, new_queue=0, on_reception="0", num_window=9, start_talon="КНА-", name_spec="Козырева Н.А.", ip_address="192.168.0.8")
+    spec9 = Specialist(id=9, new_queue=0, on_reception="0", num_window=9, start_talon="КНА-", name_spec="Козырева Н.А.", ip_address="192.168.0.8",
+                       description="Льготники, назначение стипендий,\nназначение мат. помощи", bakalavr=1, specialist=1)
     await spec9.create()
-    spec10 = Specialist(id=10, new_queue=0, on_reception="0", num_window=10, start_talon="БГВ-", name_spec="Бутусова Г.В.", ip_address="192.168.0.9")
+    spec10 = Specialist(id=10, new_queue=0, on_reception="0", num_window=10, start_talon="БГВ-", name_spec="Бутусова Г.В.", ip_address="192.168.0.9",
+                        description="Подписание документов, стипендии,\nвыдача справок, мат. помощь", bakalavr=0, specialist=1)
     await spec10.create()
 
 
@@ -129,3 +138,30 @@ async def on_reception_get(id: int):
     return spec.on_reception
 
 
+async def get_description(id: int):
+    spec = await Specialist.query.where(Specialist.id == id).gino.first()
+    return spec.description
+
+
+async def get_ids_bakalavr():
+    all_specs = await Specialist.query.where(Specialist.bakalavr == 1).gino.all()
+    arr = []
+    for spec in all_specs:
+        arr.append(spec.id)
+    return sorted(arr)
+
+
+async def get_ids_specialist():
+    all_specs = await Specialist.query.where(Specialist.specialist == 1).gino.all()
+    arr = []
+    for spec in all_specs:
+        arr.append(spec.id)
+    return sorted(arr)
+
+
+async def get_all_ids():
+    all_specs = await Specialist.query.gino.all()
+    arr = []
+    for spec in all_specs:
+        arr.append(spec.id)
+    return sorted(arr)

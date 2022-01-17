@@ -5,8 +5,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from db_api.db_gino import db
 from db_api import db_gino
 from db_api.quick_cmd import create_db_specialist, get_last_queue, add_to_queue, next_queue, get_name_and_num_win, \
-    get_ip_address
-from pages import start_win, bakalavr, specialist, magistr, final_win, queue
+    get_ip_address, get_ids_bakalavr
+from pages import start_win, queue
 from server import server_start
 
 
